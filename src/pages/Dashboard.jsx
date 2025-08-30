@@ -15,14 +15,14 @@ export default function Dashboard() {
 
  
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-       
-        const res = await fetch(`/api/earthquakes?minMag=${minMag}`);
-
-
+        // ✅ call your Express backend
+        const res = await fetch(
+          `http://localhost:5000/api/earthquakes?minMag=${minMag}`
+        );
         const data = await res.json();
         setQuakes(data);
       } catch (err) {
