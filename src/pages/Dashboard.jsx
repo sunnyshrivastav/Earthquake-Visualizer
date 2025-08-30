@@ -13,14 +13,16 @@ export default function Dashboard() {
   const [selectedCoords, setSelectedCoords] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
+ 
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        // ✅ call your Express backend
-        const res = await fetch(
-          `http://localhost:5000/api/earthquakes?minMag=${minMag}`
-        );
+       
+        const res = await fetch(`/api/earthquakes?minMag=${minMag}`);
+
+
         const data = await res.json();
         setQuakes(data);
       } catch (err) {
